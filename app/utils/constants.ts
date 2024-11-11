@@ -91,7 +91,7 @@ async function getOpenAILikeModels(): Promise<ModelInfo[]> {
       return [];
     }
     const api_key = import.meta.env.OPENAI_LIKE_API_KEY ?? "";
-    const response = await fetch(`${base_url}/models`, {
+    const response = await fetch(`${base_url}/api/models`, {
       headers: {
         Authorization: `Bearer ${api_key}`,
       }
