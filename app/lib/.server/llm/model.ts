@@ -58,8 +58,9 @@ export function getGroqModel(apiKey: string, model: string) {
 }
 
 export function getOllamaModel(baseURL: string, model: string) {
-  let Ollama = ollama(model, {
-    numCtx: 32768,
+  const numCtx = process.env.OLLAMA_NUM_CTX ? parseInt(process.env.OLLAMA_NUM_CTX) : 32768;
+  const Ollama = ollama(model, {
+    numCtx,
   });
 
   Ollama.config.baseURL = `${baseURL}/api`;
